@@ -1,0 +1,266 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #424246;
+    overflow-x: hidden;
+}
+
+header{
+    padding: 1.5rem 1rem;
+    background-color: #424246;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+header #logo{
+    font-size: large;
+    color: #8d8d8d;
+}
+
+main{
+    position: relative;
+    padding: 1rem 2rem;
+}
+
+main #search-form{
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 1px solid #ececec; */
+    background-color: #efefed;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 1rem auto;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+main .indicators{
+    position: absolute;
+    top: 5%;
+    left: 2%;
+    color: #ccc;
+    font-size: 1.2rem;
+}
+
+.indicators, .indicators > *{
+    align-items: center;
+}
+
+.indicators > *{
+    margin-right: 1rem;
+}
+
+#search-form *{
+    text-align: center;
+    border: none;
+    padding: 0.8rem;
+    background-color: transparent;
+}
+
+#search-form button[type="submit"], [class^="section"] [class^="icofont-"]{
+    font-size: 18px;
+    color: orangered;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+
+}
+
+#search-form input[type="search"]{
+    outline: none;
+    width: 85%;
+}
+
+#search-form input[type='search']:focus + button{
+    background-color: orangered;
+}
+
+#search-form input[type='search']:focus + button *{
+    color: #fafafc;
+}
+
+#display-pane{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    min-height: 80vh;
+    border: 1px solid rgb(65, 42, 23);
+    border-radius: 5px;
+}
+
+#display-pane .user-item{
+    display: flex;
+    width: 46%;
+    height: 16vw;
+    border-radius: 5px;
+    background-color: #f2f2f5;
+    color: #424246;
+    margin: 2rem 2%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+}
+
+#display-pane .user-item > *{
+    height: 100%;
+}
+
+#display-pane .user-item .user-img{
+    width: 35%;
+    object-fit: cover;
+    /* background-image: url("../assets/images/IMG-20180112-WA0009.jpg"); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-color: ; */
+}
+
+#display-pane .user-item .user-info{
+    min-width: 60%;
+    max-width: 65%;
+    padding: 2rem;
+    font-size: small;
+    line-height: 1.5;
+    /* border: 1px solid red; */
+}
+
+.user-info .user-name{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: large;
+    color: #333;
+}
+
+.user-info .user-expertise{
+    font-size: small;
+}
+
+.user-info .user-tools{
+    margin-top: 1rem;
+}
+
+.user-info .user-tools .heading{
+    /* color: brown; */
+    margin-top: 2rem;
+    padding: 0.5rem 0.5rem;
+    background-color: #ddd;
+    color: #777;
+    /* border-bottom: 1px solid #ccc; */
+}
+
+.user-info .user-tools .tool-list{
+    flex-wrap: wrap;
+    padding: 0.5rem 0;
+}
+
+.user-info .tool-list *{
+    align-items: center;
+}
+
+
+button.add-user{
+    position: fixed;
+    bottom: 10%;
+    right: 8%;
+    width: 10rem;
+    height: 10rem;
+    font-size: 4rem;
+    border-radius: 50%;
+    background-color: #737377;
+    color: #363636;
+    border: none;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+button.user-more{
+    width: auto;
+    height: auto;
+    color: #fafafc;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    background-color: dodgerblue;
+    margin: 1rem auto 0;
+    padding: 8px 24px;
+}
+
+.grey, .green, .red{
+    display: inline-block;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    margin: 0 0.5rem;
+}
+
+.grey{
+    background-color: #ccc;
+}
+
+.green{
+    background-color: lime;
+}
+
+.red{
+    background-color: orangered;
+}
+
+@media only screen and (max-width:800px){
+
+    main{
+        padding: 1rem;
+    }
+
+    main #search-form{
+        width: 80vw;
+    }
+
+    main .indicators{
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.2rem;
+    }
+
+    #display-pane{
+        margin-top: 4rem;
+        padding: 0 1rem;
+        border: none;
+    }
+
+    #display-pane .user-item{
+        display: flex;
+        width: 100%;
+        height: auto;
+        min-height: 25vmax;
+        /* border-radius: 5px; */
+        /* background-color: #fafafc; */
+        /* color: #424246; */
+        margin: 1.5rem auto;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        overflow: hidden;
+    }
+
+    #display-pane .user-item .user-info{
+        padding: 1.5rem;
+        font-size: 1rem;
+        min-width: 65%;
+        max-width: 65%;
+    }
+
+    .user-info .user-name{
+        font-size: 1.5rem;
+    }
+
+    button.add-user{
+        bottom: 10%;
+        right: 10%;
+        width: 20vw;
+        height: 20vw;
+        font-size: 2.7rem;
+    }
+
+}

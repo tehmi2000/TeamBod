@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TeamBod | Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/assets/icofont/icofont.min.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/index.js"></script>
+</head>
+<body>
+    <header>
+        <span id="logo">TeamBod</span>
+    </header>
+
+    <main>
+        <div class="indicators rows">
+            <span class="rows">
+                <i class="grey"></i>
+                <span>Beginner</span>
+            </span>
+            
+            <span class="rows">
+                <i class="green"></i>
+                <span>Intermediate</span>
+            </span>
+
+            <span class="rows">
+                <i class="red"></i>
+                <span>Expert</span>
+            </span>
+        </div>
+
+        <form action="/search" method="get" id="search-form" onsubmit="return validateSearch()">
+            <input type="search" name="query" id="searchField" placeholder="Search for a team member">
+            <button type="submit"><i class="icofont-search"></i></button>
+        </form>
+
+        <section id="display-pane" class="pane rows">
+
+            <!-- <div class="user-item">
+                <div class ="user-img"></div>
+                <div class="user-info">
+                    <div class="user-name">Micheal Campbell</div>
+                    <div class="user-expertise">Front-end Developer</div>
+                    <div class="user-tools">
+                        <div class="heading">Tools & Proficiency</div>
+                        <div class="tool-list rows">
+                            <span class="tool rows">
+                                <i class="grey"></i>
+                                <span>Python</span>
+                            </span>
+                            <span class="tool rows">
+                                <i class="yellow"></i>
+                                <span>Java</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="user-buttons">
+                        <button class="strip-btn user-more">View Profile</button>
+                    </div>
+                </div>
+            </div> -->
+        </section>
+
+        <button class="icofont-plus add-user"></button>
+    </main>
+
+    <footer class="cols">
+        <div class="links rows">
+            <div class="cols">
+                <span class="heading">HELP LINKS</span>
+                <a href="#">Contact Us</a>
+                <a href="#">About Us</a>
+                <a href="#">Terms and Conditions</a>
+            </div>
+    
+            <div class="cols">
+                <span class="heading">QUICK LINKS</span>
+                <a href="/login">Log In</a>
+                <a href="#">About Us</a>
+            </div>
+
+            <div class="cols">
+                <span class="heading">SOCIAL LINKS</span>
+                <a href="#">Whatsapp</a>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+            </div>
+        </div>
+
+        <div class="fill-container">
+            <span class="rows"><hr>Copyright &copy; 2019 Univers.com. All rights reserved<hr></span>
+        </div>
+    </footer>
+</body>
+</html>
