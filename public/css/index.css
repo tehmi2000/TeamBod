@@ -42,7 +42,7 @@ main #new-member-form{
     display: flex;
     flex-direction: column;
     position: fixed;
-    top:50%;
+    top:-50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 5px;
@@ -50,6 +50,7 @@ main #new-member-form{
     background-color: #323236;
     overflow: hidden;
     box-shadow: 0 2px 2px 3px rgba(0, 0, 0, 0.4);
+    transition: top 0.5s ease;
 }
 
 #new-member-form .head{
@@ -62,7 +63,7 @@ main #new-member-form{
 
 #new-member-form .body{
     min-width: 500px;
-    height: 450px;
+    /* height: 450px; */
     overflow: auto;
     position: relative;
     padding: 0 2rem;
@@ -71,7 +72,8 @@ main #new-member-form{
 }
 
 #new-member-form .invalid{
-    outline: 1px solid red;
+    outline: 1px solid rgba(255, 0, 0, 0.7);
+    outline-offset: 2px;
 }
 
 #new-member-form label{
@@ -91,9 +93,9 @@ main #new-member-form{
 #new-member-form .buttons{
     display:flex;
     justify-content: space-around;
-    position: absolute;
-    bottom: 2rem;
-    width: calc(100% - 4rem);
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    width: 100%;
 }
 
 #new-member-form .buttons > *{
@@ -106,8 +108,15 @@ main #new-member-form{
 
 #new-member-form .buttons [data-cancel-btn]{
     background-color: #471616;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: small;
 }
 
+#new-member-form .buttons [data-cancel-btn]:hover{
+    cursor: pointer;
+}
 
 main .indicators{
     position: absolute;
@@ -291,9 +300,13 @@ button.user-more{
 
     #new-member-form .body{
         min-width: auto;
-        height: 400px;
         padding: 0 2rem;
         width: 80vw;
+    }
+
+    #new-member-form .buttons{
+        margin-top: 4rem;
+        padding: 0 2rem;
     }
 
     #new-member-form .buttons > *{

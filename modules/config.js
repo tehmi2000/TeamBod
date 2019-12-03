@@ -29,25 +29,25 @@ const model = function(){
     const queryTest = "SELECT * FROM users LIMIT 1";
 
     // LOCALHOST CONNECTION
-    const conn = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: '',
-        database: "teambod_db"
-    });
-    const MONGO_URL = "mongodb://localhost:27017";
+    // const conn = mysql.createConnection({
+    //     host: 'localhost',
+    //     user: 'root',
+    //     password: '',
+    //     database: "teambod_db"
+    // });
+    // const MONGO_URL = "mongodb://localhost:27017";
 
     // JAWDB MYSQL CONNECTION
-    // const conn = mysql.createConnection({
-    //     host: 'hcm4e9frmbwfez47.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-    //     port: 3306,
-    //     user: 'fvj931em96v2pfta',
-    //     password: 'kkmvtfygeoulhl9w',
-    //     database: "fp2cgoso5lo53dvm"
-    // });
+    const conn = mysql.createConnection({
+        host: 'hcm4e9frmbwfez47.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+        port: 3306,
+        user: 'fvj931em96v2pfta',
+        password: 'kkmvtfygeoulhl9w',
+        database: "fp2cgoso5lo53dvm"
+    });
 
     // MLAB MONGODB CONNECTION
-    // const MONGO_URL = "mongodb://heroku_th622w1p:rjte4sgbbqbjre0d8r98vd58e0@ds261077.mlab.com:61077/heroku_th622w1p";
+    const MONGO_URL = "mongodb://heroku_th622w1p:rjte4sgbbqbjre0d8r98vd58e0@ds261077.mlab.com:61077/heroku_th622w1p";
     
     const mOptions = {
         useNewUrlParser: true,

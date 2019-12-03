@@ -37,28 +37,32 @@
         </div>
 
         <form id="new-member-form">
-            <div class="head">New Member</div>
+            <div class="head">Add Team Member</div>
             <div class="body">
                 <label for="">First Name</label>
-                <input type="text" name="name">
+                <input type="text" name="name" placeholder="E.g: John">
 
                 <label for="">Last Name</label>
-                <input type="text" name="name">
+                <input type="text" name="name" placeholder="E.g: Doe">
 
                 <label for="">Expertise</label>
-                <input type="text" name="expertise">
+                <input type="text" name="expertise" placeholder="Web Developer">
+
+                <label for="">Project Name</label>
+                <select name="project" id="">
+                    <option value="Python">--- Select Project ---</option>
+                </select>
 
                 <label for="">Tools used</label>
                 <select name="tools" id="">
-                    <option value="Python">Python</option>
+                    <option value="Python">--- Select Tool ---</option>
                 </select>
                 <input type="text" hidden>
-
-                <div class="buttons">
-                    <input type="submit" value="Create" class="strip-btn">
-                    <span data-cancel-btn>Cancel</span>
-                </div>
                 
+            </div>
+            <div class="buttons">
+                <input type="submit" value="Create" class="strip-btn">
+                <span data-cancel-btn>Cancel</span>
             </div>
         </form>
 

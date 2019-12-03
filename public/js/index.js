@@ -173,4 +173,10 @@ const getAllTeam = function() {
 document.addEventListener("DOMContentLoaded", function () {
     getAllTeam();
     document.querySelector("#new-member-form").addEventListener("submit", createHandler);
+    document.querySelector("#new-member-form [data-cancel-btn]").addEventListener("click", function(evt) {
+        document.querySelector("#new-member-form").style.top = "-50%";
+    });
+    document.querySelector("button.add-user").addEventListener("click", function(evt){
+        document.querySelector("#new-member-form").style.top = "50%";
+    });
 });
