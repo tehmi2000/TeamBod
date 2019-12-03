@@ -36,6 +36,14 @@ let testData = [
     }
 ];
 
+let testDataProject = [
+    {
+        name: "Project Univers",
+        description: "",
+        numberInTeam: 10
+    }
+];
+
 const searchHandler = (evt) => {
     evt.preventDefault();
     fetch(``)
@@ -151,9 +159,51 @@ const createItem = function(container, object){
     document.querySelector(`#${object['id']} .user-img`).style.backgroundImage = `url('${object['imageUrl']}')`;
 };
 
-const getAllTeam = function() {
+const createProjectItem = (container, object) =>{
+    console.log({container, object});
+    // <div class="project-item">
+    //     <div class="project-name">Univers</div>
+    //     <div class="project-team-number">Number of people on Project: 5</div>
+    // </div>
 
-    fetch(`/api/allTeam`).then(async function(response) {
+    let div0 = create("DIV");
+        let div1 = createComponent("DIV", `${object['name']}`);
+        let div2 = createComponent("DIV", `Team Population: ${object['numberInTeam']}`);
+
+    div0.classList.add("project-item");
+    div1.classList.add("project-name");
+    div2.classList.add("project-team-number");
+
+    div0 = joinComponent(div0, div1, div2);
+    container.appendChild(div0);
+};
+
+const getAllProject = () => {
+    let apiUrl = `/api/allProject`;
+
+    testDataProject.forEach(item => {
+        createProjectItem(document.querySelector("#display-pane"), item);
+    });
+
+    fetch(``).then(async function(response) {
+        try{
+            let allProject = await response.json();
+            allProject.forEach(item => {
+                createProjectItem(document.querySelector("#display-pane"), item);
+            });
+
+        }catch(error) {
+            console.error(error);
+        }
+
+    }).catch(function(error) {
+        console.error(error);
+    });
+};
+
+const getAllTeam = () => {
+    let apiUrl = `/api/project-univers/allTeam`;
+    fetch(apiUrl).then(async function(response) {
 
         try{
             let allTeamMembers = await response.json();
@@ -170,8 +220,7 @@ const getAllTeam = function() {
     });
 };
 
-document.addEventListener("DOMContentLoaded", function () {
-    getAllTeam();
+const addListeners = () => {
     document.querySelector("#new-member-form").addEventListener("submit", createHandler);
     document.querySelector("#new-member-form [data-cancel-btn]").addEventListener("click", function(evt) {
         document.querySelector("#new-member-form").style.top = "-50%";
@@ -179,4 +228,10 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("button.add-user").addEventListener("click", function(evt){
         document.querySelector("#new-member-form").style.top = "50%";
     });
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+    // getAllTeam();
+    getAllProject();
+    addListeners();
 });

@@ -27,7 +27,10 @@ const model = function() {
         return formattedString;
     };
 
-    router.get("/allTeam", function(req, res){
+    router.get("/:project/allTeam", function(req, res){
+        let projectName = req.params.project;
+        console.log(projectName);
+        
         const testData = [
             {
                 id: "one",
@@ -99,7 +102,7 @@ const model = function() {
     
         mongoConn.then(client => {
             const collection = client.db(`Project-Univers`).collection(`Team-Members`);
-            
+
             collection.deleteOne({"_id": ObjectID(memberID)}, (err, result) => {
                 if (err) {
                     log(err);
