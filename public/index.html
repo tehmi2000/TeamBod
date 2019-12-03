@@ -36,6 +36,32 @@
             </span>
         </div>
 
+        <form id="new-member-form">
+            <div class="head">New Member</div>
+            <div class="body">
+                <label for="">First Name</label>
+                <input type="text" name="name">
+
+                <label for="">Last Name</label>
+                <input type="text" name="name">
+
+                <label for="">Expertise</label>
+                <input type="text" name="expertise">
+
+                <label for="">Tools used</label>
+                <select name="tools" id="">
+                    <option value="Python">Python</option>
+                </select>
+                <input type="text" hidden>
+
+                <div class="buttons">
+                    <input type="submit" value="Create" class="strip-btn">
+                    <span data-cancel-btn>Cancel</span>
+                </div>
+                
+            </div>
+        </form>
+
         <form action="/search" method="get" id="search-form" onsubmit="return validateSearch()">
             <input type="search" name="query" id="searchField" placeholder="Search for a team member">
             <button type="submit"><i class="icofont-search"></i></button>

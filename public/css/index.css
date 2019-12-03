@@ -37,6 +37,78 @@ main #search-form{
     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
 }
 
+main #new-member-form{
+    z-index: +100;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    color: #ccc;
+    background-color: #323236;
+    overflow: hidden;
+    box-shadow: 0 2px 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+#new-member-form .head{
+    padding: 1.5rem 1rem;
+    height: 10%;
+    text-align: center;
+    font-size: medium;
+    background-color: #626266;
+}
+
+#new-member-form .body{
+    min-width: 500px;
+    height: 450px;
+    overflow: auto;
+    position: relative;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#new-member-form .invalid{
+    outline: 1px solid red;
+}
+
+#new-member-form label{
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    font-size: small;
+}
+
+#new-member-form input:not([type="submit"]), #new-member-form select{
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    color: #ccc;
+    background-color: #525256;
+}
+
+#new-member-form .buttons{
+    display:flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 2rem;
+    width: calc(100% - 4rem);
+}
+
+#new-member-form .buttons > *{
+    color: #ccc;
+    border-radius: 5px;
+    background-color: #727276;
+    width: 40%;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+#new-member-form .buttons [data-cancel-btn]{
+    background-color: #471616;
+}
+
+
 main .indicators{
     position: absolute;
     top: 5%;
@@ -215,6 +287,18 @@ button.user-more{
 
     main #search-form{
         width: 80vw;
+    }
+
+    #new-member-form .body{
+        min-width: auto;
+        height: 400px;
+        padding: 0 2rem;
+        width: 80vw;
+    }
+
+    #new-member-form .buttons > *{
+        width: 45%;
+        box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
     }
 
     main .indicators{

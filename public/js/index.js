@@ -41,6 +41,44 @@ const searchHandler = (evt) => {
     fetch(``)
 };
 
+const createHandler = (e) => {
+    e.preventDefault();
+    let validation = [true];
+
+    document.querySelectorAll("#new-member-form [name]").forEach(field => {
+        let check = field.value !== '';
+        if(check === false){
+            field.classList.toggle("invalid", true);
+        }else{
+            field.classList.toggle("invalid", false);
+        }
+        validation.push(check);
+    });
+
+    let shouldSubmit = !validation.some(item =>{
+        return item === false;
+    });
+
+    // if(shouldSubmit === true){
+    console.log({validation, shouldSubmit});
+    // }
+
+    let bodyValue = {
+        name: (function(){
+            let namesList = [];
+            document.querySelectorAll("#new-member-form [name='name']").forEach(field => {
+                namesList.push(formatName(field.value));
+            });
+
+            return namesList.join(' ');
+        }()),
+
+        expertise: document.querySelector("[name='expertise']").value
+    };
+
+    console.log(bodyValue);
+};
+
 const createItem = function(container, object){
 
     // <div class="user-item">
@@ -134,4 +172,5 @@ const getAllTeam = function() {
 
 document.addEventListener("DOMContentLoaded", function () {
     getAllTeam();
+    document.querySelector("#new-member-form").addEventListener("submit", createHandler);
 });
