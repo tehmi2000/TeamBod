@@ -2,6 +2,7 @@
 
 // VARIABLE ASSIGNMENTS
 const express = require("express");
+const fileUpload = require("express-fileupload");
 const app = express();
 const server = require("http").createServer(app);
 const io =  require("socket.io")(server);
@@ -25,14 +26,15 @@ app.use((req, res, next) => {
 
 app.use("/", express.static(__dirname + "/public"));
 app.use(cookieParser());
+app.use(fileUpload());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(cookieParser());
 app.use(session({
     secret: "i am a secret",
     resave: true,
     saveUninitialized: true
 }));
+
 server.listen(PORT, "0.0.0.0", function() {
     console.log("Server started...");
     console.log(`Server currently running on port ${PORT}`);

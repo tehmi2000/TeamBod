@@ -33,7 +33,9 @@ const model = function() {
     };
 
     router.post("/upload", (req, res) => {
-        console.log(req);
+        console.log(req.files);
+        console.log(req.body);
+        console.log(req.query);
         res.end();
     });
 
@@ -72,13 +74,15 @@ const model = function() {
                 numberInTeam: 100
             }
         ];
+        
+        res.json(testData);
 
         mongoConn.then(client => {
             const collection = client.db(`${user}`).collection(`ProjectCollection`);
 
             collection.find().toArray((err, docs) => {
                 let data = (err)? err: docs;
-                res.json(data);
+                //res.json(data);
             });
             
         }).catch(error => {

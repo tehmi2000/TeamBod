@@ -51,24 +51,25 @@ const searchHandler = (evt) => {
 
 const uploadHandler = (evt) => {
     evt.preventDefault();
-    let input = document.querySelector("input[name='upload-img']").files[0];
-    let form = new FormData();
-    form.append("file", input);
-    console.log(input);
+    try{
+    let input1 = document.querySelector("input[name='upload-img']");
+    let input2 = document.querySelector("input[name='text1']");
+    
+    let fd = new FormData();
+    fd.append("imageName", input1.files[0]);
     let options = {
         method: "POST",
-        body: form,
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        }
+        body: fd
     };
-
-    delete options.headers['Content-Type'];
+    
     fetch(`/api/upload`, options).then(response => {
-        console.log("Success");
+        alert("Success");
     }).catch(error => {
-        console.error(error);
+        alert(error);
     });
+    }catch(err){
+    	alert(err);
+    }
 };
 
 const createHandler = (e) => {
@@ -262,7 +263,7 @@ const addListeners = () => {
         document.querySelector("#new-member-form").style.top = "50%";
     });
 
-    document.querySelector("#upload-test").addEventListener("submit", uploadHandler);
+    // document.querySelector("#upload-test").addEventListener("submit", uploadHandler);
 };
 
 document.addEventListener("DOMContentLoaded", function () {
