@@ -23,6 +23,21 @@ main{
     padding: 1rem 2rem;
 }
 
+main .navigation-btn{
+    display: block;
+    outline: none;
+    outline-offset: 3px;
+    color: #888;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    margin: auto;
+    margin-left: 0rem;
+    padding: 1rem 2.4rem;
+}
+
+main .navigation-btn:focus{
+    outline: 2px outset rgba(30, 143, 255, 0.65);
+}
+
 main #search-form{
     width: 50vw;
     display: flex;
@@ -42,7 +57,7 @@ main #new-member-form{
     display: flex;
     flex-direction: column;
     position: fixed;
-    top:-50%;
+    top:-100%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 5px;
@@ -119,11 +134,10 @@ main #new-member-form{
 }
 
 main .indicators{
-    position: absolute;
-    top: 5%;
-    left: 2%;
+    opacity: 0;
     color: #ccc;
     font-size: 1.2rem;
+    transition: opacity 0.3s ease;
 }
 
 .indicators, .indicators > *{
@@ -343,6 +357,22 @@ button.user-more{
         padding: 1rem;
     }
 
+    main .top-pane{
+        flex-direction: column;
+    }
+
+    main .indicators{
+        margin: auto;
+        font-size: 1.2rem;
+    }
+
+    main .navigation-btn{
+        margin: auto;
+        margin-bottom: 1rem;
+        width: 80%;
+        padding: 0.8rem 2.4rem;
+    }
+
     main #search-form{
         width: 80vw;
     }
@@ -363,16 +393,8 @@ button.user-more{
         box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
     }
 
-    main .indicators{
-        position: absolute;
-        top: 10%;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 1.2rem;
-    }
-
     #display-pane{
-        margin-top: 4rem;
+        margin-top: 3rem;
         padding: 0 1rem;
         border: none;
         min-height: 300px;

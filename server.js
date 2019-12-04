@@ -83,7 +83,6 @@ app.get("/", controller.dashboard);
 // app.post("/resetHandler", controller.resetHandler);
 
 app.use("/api", require("./router/apiRoute"));
-app.use("/categories", require("./router/categoryRoute"));
 
 // SOCKET CONNECTION
 io.on("connection", (socket) => {

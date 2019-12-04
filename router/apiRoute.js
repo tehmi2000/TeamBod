@@ -27,10 +27,26 @@ const model = function() {
         return formattedString;
     };
 
+    router.get("/allProject", function (req, res) {
+        const testData = [
+            {
+                name: "Project Univers",
+                description: "",
+                numberInTeam: 10
+            },
+
+            {
+                name: "Project Hitmee",
+                description: "",
+                numberInTeam: 100
+            }
+        ];
+
+        res.json(testData);
+    });
+
     router.get("/:project/allTeam", function(req, res){
         let projectName = req.params.project;
-        console.log(projectName);
-        
         const testData = [
             {
                 id: "one",

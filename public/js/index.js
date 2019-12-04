@@ -160,7 +160,6 @@ const createItem = function(container, object){
 };
 
 const createProjectItem = (container, object) =>{
-    console.log({container, object});
     // <div class="project-item">
     //     <div class="project-name">Univers</div>
     //     <div class="project-team-number">Number of people on Project: 5</div>
@@ -174,20 +173,23 @@ const createProjectItem = (container, object) =>{
     div1.classList.add("project-name");
     div2.classList.add("project-team-number");
 
+    div0.addEventListener("click", function(){
+        getAllTeam(`${object['name']}`);
+    });
+
     div0 = joinComponent(div0, div1, div2);
     container.appendChild(div0);
 };
 
 const getAllProject = () => {
     let apiUrl = `/api/allProject`;
-
-    testDataProject.forEach(item => {
-        createProjectItem(document.querySelector("#display-pane"), item);
-    });
-
-    fetch(``).then(async function(response) {
+    
+    fetch(apiUrl).then(async function(response) {
         try{
             let allProject = await response.json();
+            document.querySelector("#display-pane").innerHTML = "";
+            document.querySelector("main .indicators").style.opacity = "0";
+
             allProject.forEach(item => {
                 createProjectItem(document.querySelector("#display-pane"), item);
             });
@@ -201,12 +203,15 @@ const getAllProject = () => {
     });
 };
 
-const getAllTeam = () => {
-    let apiUrl = `/api/project-univers/allTeam`;
+const getAllTeam = (projectName) => {
+    let apiUrl = `/api/${projectName}/allTeam`;
     fetch(apiUrl).then(async function(response) {
-
         try{
             let allTeamMembers = await response.json();
+            document.querySelector("#display-pane").innerHTML = ``;
+            document.querySelector("main .indicators").style.opacity = "1";
+            document.querySelector(".top-pane .navigation-btn").innerHTML = `...<i class='icofont-back'></i>Back&nbsp; | &nbsp;${projectName}`;
+
             allTeamMembers.forEach(item => {
                 createItem(document.querySelector("#display-pane"), item);
             });
@@ -220,10 +225,16 @@ const getAllTeam = () => {
     });
 };
 
+
 const addListeners = () => {
+    document.querySelector(".top-pane .navigation-btn").addEventListener('click', function(evt) {
+        evt.currentTarget.innerHTML = "All Project";
+        getAllProject();
+    });
+
     document.querySelector("#new-member-form").addEventListener("submit", createHandler);
     document.querySelector("#new-member-form [data-cancel-btn]").addEventListener("click", function(evt) {
-        document.querySelector("#new-member-form").style.top = "-50%";
+        document.querySelector("#new-member-form").style.top = "-100%";
     });
     document.querySelector("button.add-user").addEventListener("click", function(evt){
         document.querySelector("#new-member-form").style.top = "50%";

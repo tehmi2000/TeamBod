@@ -19,22 +19,6 @@
     </header>
 
     <main>
-        <div class="indicators rows">
-            <span class="rows">
-                <i class="grey"></i>
-                <span>Beginner</span>
-            </span>
-            
-            <span class="rows">
-                <i class="green"></i>
-                <span>Intermediate</span>
-            </span>
-
-            <span class="rows">
-                <i class="red"></i>
-                <span>Expert</span>
-            </span>
-        </div>
 
         <form id="new-member-form">
             <div class="head">Add Team Member</div>
@@ -66,10 +50,31 @@
             </div>
         </form>
 
-        <form action="/search" method="get" id="search-form" onsubmit="return validateSearch()">
-            <input type="search" name="query" id="searchField" placeholder="Search for a team member">
-            <button type="submit"><i class="icofont-search"></i></button>
-        </form>
+        <div class="rows top-pane">
+            <button class="strip-btn navigation-btn">All Project</button>
+
+            <form action="/search" method="get" id="search-form" onsubmit="return validateSearch()">
+                <input type="search" name="query" id="searchField" placeholder="Search for a team member">
+                <button type="submit"><i class="icofont-search"></i></button>
+            </form>
+
+            <div class="indicators rows">
+                <span class="rows">
+                    <i class="grey"></i>
+                    <span>Beginner</span>
+                </span>
+                
+                <span class="rows">
+                    <i class="green"></i>
+                    <span>Intermediate</span>
+                </span>
+    
+                <span class="rows">
+                    <i class="red"></i>
+                    <span>Expert</span>
+                </span>
+            </div>
+        </div>
 
         <section id="display-pane" class="pane rows">
 
