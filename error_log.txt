@@ -1,1 +1,6 @@
 Tue, 03 Dec 2019 04:54:00 GMT: {"errno":"ENOTFOUND","code":"ENOTFOUND","syscall":"getaddrinfo","hostname":"hcm4e9frmbwfez47.cbetxkdyhwsb.us-east-1.rds.amazonaws.com","host":"hcm4e9frmbwfez47.cbetxkdyhwsb.us-east-1.rds.amazonaws.com","port":3306,"fatal":true}
+Wed, 04 Dec 2019 04:28:36 GMT: {"errno":"ENOTFOUND","code":"ENOTFOUND","syscall":"getaddrinfo","hostname":"hcm4e9frmbwfez47.cbetxkdyhwsb.us-east-1.rds.amazonaws.com","host":"hcm4e9frmbwfez47.cbetxkdyhwsb.us-east-1.rds.amazonaws.com","port":3306,"fatal":true}
+Wed, 04 Dec 2019 04:30:15 GMT: {"driver":true,"name":"MongoError"}
+Wed, 04 Dec 2019 04:31:47 GMT: {"driver":true,"name":"MongoError"}
+Wed, 04 Dec 2019 04:51:59 GMT: {"driver":true,"name":"MongoError","index":0,"code":13297,"errmsg":"db already exists with different case already have: [Tehmi2000] trying to create [tehmi2000]"}
+Wed, 04 Dec 2019 04:53:07 GMT: {"driver":true,"name":"MongoError","index":0,"code":13297,"errmsg":"db already exists with different case already have: [admin] trying to create [Admin]"}

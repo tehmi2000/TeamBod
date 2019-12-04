@@ -27,7 +27,38 @@ const model = function() {
         return formattedString;
     };
 
-    router.get("/allProject", function (req, res) {
+    const formatToDBName = (name) => {
+        let dBName = name.replace(' ', '-');
+        return dBName;
+    };
+
+    router.post("/upload", (req, res) => {
+        console.log(req);
+        res.end();
+    });
+
+    router.post("/:user/createProject", function(req, res){
+        let user = formatToDBName(req.params.user);
+        const insertData = {...req.body};
+
+        mongoConn.then(client => {
+            const collection = client.db(`${user}`).collection(`ProjectCollection`);
+
+            collection.insertOne(insertData, (err, result) => {
+                if (err) {
+                    log(err);
+                    res.json(err);
+                }else{
+                    res.json(result);
+                }
+            });
+        }).catch(error => {
+            console.log(error);
+        }); 
+    });
+
+    router.get("/:user/allProject", function (req, res) {
+        let user = formatToDBName(req.params.user);
         const testData = [
             {
                 name: "Project Univers",
@@ -42,11 +73,22 @@ const model = function() {
             }
         ];
 
-        res.json(testData);
+        mongoConn.then(client => {
+            const collection = client.db(`${user}`).collection(`ProjectCollection`);
+
+            collection.find().toArray((err, docs) => {
+                let data = (err)? err: docs;
+                res.json(data);
+            });
+            
+        }).catch(error => {
+            console.log(error);
+        });
     });
 
-    router.get("/:project/allTeam", function(req, res){
-        let projectName = req.params.project;
+    router.get("/:user/:project/allTeam", function(req, res){
+        let user = formatToDBName(req.params.user);
+        let projectName = formatToDBName(req.params.project);
         const testData = [
             {
                 id: "one",
@@ -87,19 +129,22 @@ const model = function() {
         res.json(testData);
     });
 
-    router.get("/user/:username", function(req, res) {
-
+    router.get("/:project/allTeam/:teamMemberID", function(req, res) {
+        // Get team member profile
+        let projectName = formatToDBName(req.params.project);
+        res.json({});
     });
 
-    router.post("/addTeamMember", (req, res) => {
+    router.post("/:project/addTeamMember", (req, res) => {
         const {name} = req.body;
+        let projectName = formatToDBName(req.params.project);
 
         let insertData = {
             name
         };
 
         mongoConn.then(client => {
-            const collection = client.db(`Project-Univers`).collection(`Team-Members`);
+            const collection = client.db(`${projectName}`).collection(`Team-Members`);
             collection.insertOne(insertData, (err, result) => {
                 if (err) {
                     log(err);
@@ -113,11 +158,12 @@ const model = function() {
         });
     });
 
-    router.get("/removeTeamMember/:memberID", (req, res) => {
+    router.get("/:project/removeTeamMember/:memberID", (req, res) => {
+        let projectName = formatToDBName(req.params.project);
         let memberID = req.params.memberID;
     
         mongoConn.then(client => {
-            const collection = client.db(`Project-Univers`).collection(`Team-Members`);
+            const collection = client.db(`${projectName}`).collection(`Team-Members`);
 
             collection.deleteOne({"_id": ObjectID(memberID)}, (err, result) => {
                 if (err) {

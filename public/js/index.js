@@ -46,7 +46,29 @@ let testDataProject = [
 
 const searchHandler = (evt) => {
     evt.preventDefault();
-    fetch(``)
+    // fetch(``)
+};
+
+const uploadHandler = (evt) => {
+    evt.preventDefault();
+    let input = document.querySelector("input[name='upload-img']").files[0];
+    let form = new FormData();
+    form.append("file", input);
+    console.log(input);
+    let options = {
+        method: "POST",
+        body: form,
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    };
+
+    delete options.headers['Content-Type'];
+    fetch(`/api/upload`, options).then(response => {
+        console.log("Success");
+    }).catch(error => {
+        console.error(error);
+    });
 };
 
 const createHandler = (e) => {
@@ -182,7 +204,7 @@ const createProjectItem = (container, object) =>{
 };
 
 const getAllProject = () => {
-    let apiUrl = `/api/allProject`;
+    let apiUrl = `/api/TeamBod-Admin/allProject`;
     
     fetch(apiUrl).then(async function(response) {
         try{
@@ -204,7 +226,7 @@ const getAllProject = () => {
 };
 
 const getAllTeam = (projectName) => {
-    let apiUrl = `/api/${projectName}/allTeam`;
+    let apiUrl = `/api/TeamBod-Admin/${projectName}/allTeam`;
     fetch(apiUrl).then(async function(response) {
         try{
             let allTeamMembers = await response.json();
@@ -239,6 +261,8 @@ const addListeners = () => {
     document.querySelector("button.add-user").addEventListener("click", function(evt){
         document.querySelector("#new-member-form").style.top = "50%";
     });
+
+    document.querySelector("#upload-test").addEventListener("submit", uploadHandler);
 };
 
 document.addEventListener("DOMContentLoaded", function () {
