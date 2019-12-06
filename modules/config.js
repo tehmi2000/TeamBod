@@ -29,25 +29,25 @@ const model = function(){
     const queryTest = "SELECT * FROM users LIMIT 1";
 
     // LOCALHOST CONNECTION
-    const conn = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: '',
-        database: "teambod_db"
-    });
-    const MONGO_URL = "mongodb://localhost:27017";
+    // const conn = mysql.createConnection({
+    //     host: 'localhost',
+    //     user: 'root',
+    //     password: '',
+    //     database: "teambod_db"
+    // });
+    // const MONGO_URL = "mongodb://localhost:27017";
 
     // JAWDB MYSQL CONNECTION
-    // const conn = mysql.createConnection({
-    //     host: 'hcm4e9frmbwfez47.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-    //     port: 3306,
-    //     user: 'fvj931em96v2pfta',
-    //     password: 'kkmvtfygeoulhl9w',
-    //     database: "fp2cgoso5lo53dvm"
-    // });
+    const conn = mysql.createConnection({
+        host: 'hcm4e9frmbwfez47.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+        port: 3306,
+        user: 'fvj931em96v2pfta',
+        password: 'kkmvtfygeoulhl9w',
+        database: "fp2cgoso5lo53dvm"
+    });
 
     // ATLAS CONNECTION STRING
-    // const MONGO_URL = "mongodb+srv://TeamBod-Admin:uckaA9EBgCXBJOtS@cluster0-rpk6b.azure.mongodb.net/test?retryWrites=true&w=majority";
+    const MONGO_URL = "mongodb+srv://TeamBod-Admin:uckaA9EBgCXBJOtS@cluster0-rpk6b.azure.mongodb.net/test?retryWrites=true&w=majority";
     
     const mOptions = {
         useNewUrlParser: true,
