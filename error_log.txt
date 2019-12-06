@@ -9,3 +9,4 @@ Thu, 05 Dec 2019 04:58:39 GMT: {"driver":true,"name":"MongoError","index":0,"cod
 Thu, 05 Dec 2019 08:44:23 GMT: {"errno":"ENOTFOUND","code":"ENOTFOUND","syscall":"getaddrinfo","hostname":"hcm4e9frmbwfez47.cbetxkdyhwsb.us-east-1.rds.amazonaws.com","host":"hcm4e9frmbwfez47.cbetxkdyhwsb.us-east-1.rds.amazonaws.com","port":3306,"fatal":true}
 Thu, 05 Dec 2019 09:12:56 GMT: {"name":"MongoTimeoutError","reason":{"name":"MongoNetworkError","errorLabels":["TransientTransactionError"]}}
 Thu, 05 Dec 2019 09:12:56 GMT: {"name":"MongoTimeoutError","reason":{"name":"MongoNetworkError","errorLabels":["TransientTransactionError"]}}
+Fri, 06 Dec 2019 07:59:40 GMT: {"errno":"ENOTFOUND","code":"ENOTFOUND","syscall":"getaddrinfo","hostname":"hcm4e9frmbwfez47.cbetxkdyhwsb.us-east-1.rds.amazonaws.com","host":"hcm4e9frmbwfez47.cbetxkdyhwsb.us-east-1.rds.amazonaws.com","port":3306,"fatal":true}

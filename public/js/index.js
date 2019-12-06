@@ -134,11 +134,13 @@ const createProjectHandler = (e) => {
     console.log(bodyValue);
 
     if(isOk === true){
+        document.querySelector("#new-project-form input[type='submit']").value = "Creating Project...";
         fetch(apiUrl, options).then(async response => {
             let result = await response.json();
             let data = dataValidator(result).data;
-
+            
             if(data){
+                document.querySelector("#new-project-form").style.top = "-100%";
                 data.forEach(item => {
                     createProjectItem(document.querySelector("#display-pane"), item);
                 });
@@ -175,11 +177,13 @@ const createTeamHandler = (e) => {
     };
 
     if(isOk === true){
+        document.querySelector("#new-member-form input[type='submit']").value = "Adding New Team Member...";
         fetch(apiUrl, options).then(async response => {
             let result = await response.json();
             let data = dataValidator(result).data;
 
             if(data){
+                document.querySelector("#new-member-form").style.top = "-100%";
                 result.forEach(item => {
                     createItem(document.querySelector("#display-pane"), item);
                 });
