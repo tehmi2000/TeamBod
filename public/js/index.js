@@ -297,7 +297,7 @@ const showResponseBar = (timerObject) => {
         clearTimeout(globalData['timer']);
     }
 
-    responseDisplay.style.bottom = "10rem";
+    responseDisplay.classList.toggle("show", true);
     responseDisplay.innerHTML = timerObject.label;
 
     switch (timerObject.action) {
@@ -308,7 +308,7 @@ const showResponseBar = (timerObject) => {
                 globalData['timer'] = null;
         
                 const intime = setTimeout(()=>{
-                    responseDisplay.style.bottom = "-10rem";
+                    responseDisplay.classList.toggle("show", false);
                     clearTimeout(intime);
                 }, 5000);
             }, timerObject.timeout * 1000);
@@ -318,7 +318,7 @@ const showResponseBar = (timerObject) => {
             globalData['timer'] = setTimeout(()=>{
                 clearTimeout(globalData['timer']);
                 globalData['timer'] = null;
-                responseDisplay.style.bottom = "-10rem";
+                responseDisplay.classList.toggle("show", false);
             }, timerObject.timeout * 1000);
             break;
         default:
