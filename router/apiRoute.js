@@ -156,7 +156,14 @@ const model = function() {
     });
 
     router.post("/:user/:project/addTeamMember", (req, res) => {
-        const {name} = req.body;
+        const insertValue = Object.assign({}, req.body, {
+            imageUrl: "../assets/images/images\ \(10\).jpeg",
+            tools: [
+                {name: "Python", level: "beginner"},
+                {name: "Java", level: "expert"}
+            ]
+        });
+
         let user = formatToDBName(req.params.user);
         let projectName = formatToDBName(req.params.project);
 
@@ -172,7 +179,7 @@ const model = function() {
 
         mongoConn.then(client => {
             const collection = client.db(`${projectName}`).collection(`Team-Members`);
-            collection.insertOne(insertData, (err, result) => {
+            collection.insertOne(insertValue, (err, result) => {
                 if (err) {
                     log(err);
                     res.json(err);

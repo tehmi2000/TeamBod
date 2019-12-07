@@ -151,8 +151,8 @@ const model = function() {
         search: function(req, res) {
             readFile("./public/search.html", req, res);
         },
-        myprofile: function(req, res) {
-            readFile("./public/profile.html", req, res);
+        profile: function(req, res) {
+            res.redirect(`/profile.html?user_profile=${req.params.user}`);
         },
         control: function(req, res) {
             readFile("./public/control.html", req, res);

@@ -72,11 +72,12 @@ connection.connect(function(err) {
 
 // APPLICATION ROUTING
 app.get("/", controller.dashboard);
+app.get("/profile/:user", controller.profile);
 // app.get("/login", controller.login);
 // app.get("/signup", controller.signup);
 // app.get("/passwordReset", controller.reset);
 // app.get("/logout", controller.logout);
-// app.get("/myprofile", controller.myprofile);
+
 // app.get("/myprofile/orders", controller.control);
 // app.get("/search", controller.search);
 // app.get("/view/:itemID", controller.productView);

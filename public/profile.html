@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TeamBod | Profile</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/assets/icofont/icofont.min.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/profile.js"></script>
+    <script data-ad-client="ca-pub-6903692907552928" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body>
+    <header>
+        <span id="logo">TeamBod</span>
+    </header>
+
+    <main>
+
+        <div class="response-display">Fetching</div>
+
+        <div class="rows top-pane">
+            <a href="/" class="link-btn navigation-btn"><i class="icofont-arrow-left"></i> Back to Projects</a>
+
+            <form action="/search" method="get" id="search-form" onsubmit="return validateSearch()">
+                <input type="search" name="query" id="searchField" placeholder="Search for a team member">
+                <button type="submit"><i class="icofont-search"></i></button>
+            </form>
+
+            <div class="indicators rows">
+                <span class="rows">
+                    <i class="grey"></i>
+                    <span>Beginner</span>
+                </span>
+                
+                <span class="rows">
+                    <i class="green"></i>
+                    <span>Intermediate</span>
+                </span>
+    
+                <span class="rows">
+                    <i class="red"></i>
+                    <span>Expert</span>
+                </span>
+            </div>
+        </div>
+    </main>
+    <!-- <aside>
+        <form id="upload-test" class="cols">
+            <label for="">Upload Image Test</label>
+            <input type="file" name="upload-img" id="">
+            <input type="submit" value="Upload">
+        </form>
+    </aside> -->
+
+    <footer class="cols">
+        <div class="links rows">
+            <div class="cols">
+                <span class="heading">HELP LINKS</span>
+                <a href="#">Contact Us</a>
+                <a href="#">About Us</a>
+                <a href="#">Terms and Conditions</a>
+            </div>
+    
+            <div class="cols">
+                <span class="heading">QUICK LINKS</span>
+                <a href="#">Log In</a>
+                <a href="#">About Us</a>
+            </div>
+
+            <div class="cols">
+                <span class="heading">SOCIAL LINKS</span>
+                <a href="#">Whatsapp</a>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+            </div>
+        </div>
+
+        <div class="fill-container">
+            <span class="rows"><hr>Copyright &copy; 2019 Univers.com. All rights reserved<hr></span>
+        </div>
+    </footer>
+</body>
+</html>

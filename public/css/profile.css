@@ -1,0 +1,12 @@
+body, header{
+    background-color: #424246;
+}
+
+header{
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+header #logo{
+    font-size: large;
+    color: #8d8d8d;
+}

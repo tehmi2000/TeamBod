@@ -1,113 +1,6 @@
-const openMenu = function() {
-    document.querySelector("#sidemenu").style.marginLeft = "0%";
-};
-
-const closeMenu = function() {
-    document.querySelector("#sidemenu").style.marginLeft = "-150%";
-};
-
 document.addEventListener("DOMContentLoaded", function () {
-    let delay;
-    const dropMenu = document.querySelector(".drop-container");
-    if(dropMenu){
-        dropMenu.addEventListener("mouseover", function(evt) {
-            if(delay){
-                clearTimeout(delay);
-            }
-            document.querySelector(".drop-container .drop-content").style.display = "flex";
-        });
-
-        dropMenu.addEventListener("mouseout", function(evt) {
-            delay = setTimeout(function() {
-                document.querySelector(".drop-container .drop-content").style.display = "none";
-            }, 1000);
-        });
-    }
-
-    if (get_cookie("username") && document.querySelector("#sidemenu")) {
-        let div0 = create("DIV");
-        let child = "<a href='/myprofile'><img id='user-photo' src='../assets/images/contacts-filled.png' alt='' class='user-picture'></a><a href='/logout'><button>Logout</button></a>";
-        div0.innerHTML = child;
-        document.querySelector("#sidemenu nav div:first-child").replaceWith(div0);
-        
-        fetch(`/api/user/${get_cookie("username").value}`).then(function(response) {
-
-            response.json().then( function(user_data) {
-                if(user_data.profile_picture !== ""){
-                    document.querySelector("#sidemenu #user-photo").src = user_data.profile_picture;
-                }
-            }).catch(function (error) {
-                console.error(error);
-            });
-
-        }).catch(function(error) {
-            console.error(error);
-        });
-
-        document.querySelector("#sidemenu #controls").style.display = "flex";
-    }
+ 
 });
-// if('serviceWorker' in navigator){
-//     window.addEventListener('load', ()=>{
-//         navigator.serviceWorker.register("/hitmee-sw.js").then(function(reg) {
-//             console.log("Service worker is working fine");
-            
-//             function updateReady(worker) {
-//                 var answerToUpdate = confirm("An update to the page is available, do you wish to receive updates now?");
-                
-//                 if(answerToUpdate != true) return;
-//                 worker.postMessage({action : 'skipWaiting'});
-//             }
-        
-//             if(!navigator.serviceWorker.controller) return;
-        
-//             if(reg.waiting){
-//                 updateReady(reg.waiting);
-//                 return;
-//             }else if(reg.installing){
-//                 reg.installing.addEventListener("statechange", function(){
-//                     if (this.state == "installed"){
-//                         updateReady(reg.installing);
-//                     }
-//                 });
-//                 return;
-//             }else{
-//                 reg.addEventListener("updatefound", function(){
-//                     updateReady(reg.installing);
-//                     reg.installing.addEventListener("statechange", function(){
-//                         if (this.state == "installed"){
-//                             return;
-//                         }
-//                     });
-//                 });
-//             }
-            
-//             navigator.serviceWorker.addEventListener('controllerchange', function(event) {
-//                 window.location.reload();
-//             });
-        
-//         }).catch(function(err) {
-//             console.log(err.message);
-//             console.log("Service worker is not supported");
-//         });
-//     }); 
-// }
-
-// socket.emit('update socketID', get_cookie("hitmee-username").value);
-
-// socket.on('reconnect', function() {
-//     if(get_cookie("hitmee-username")){
-//         socket.emit('update socketID', get_cookie("hitmee-username").value);
-//         if(get_cookie("chattingWith")){
-//             socket.emit('get presence', get_cookie("chattingWith").value);
-//         }
-//     }
-// });
-
-// socket.on('connectedTo', function(data) {
-//     document.cookie="chattingWith="+data+";";
-// });
-
 
 function formatTime(hours, minutes) {
     const ampm = (hours >= 12)? 'PM' : 'AM';
@@ -117,7 +10,7 @@ function formatTime(hours, minutes) {
     return ftime;
 }
 
-function get_cookie(name){
+function getCookie(name){
     arrayCookie=(document.cookie).split(';');
     for (let index = 0; index < arrayCookie.length; index++) {
         if (arrayCookie[index].indexOf(name)!=-1) {
@@ -147,7 +40,7 @@ function genHex(length){
     return generated_hex;
 }
 
-function get_query() {
+function getQuery() {
     const object = {};
     const query_list = window.location.search.substring(1).split('&');
 

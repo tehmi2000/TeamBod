@@ -15,6 +15,7 @@ body{
 
 header{
     width: 100%;
+    padding: 1.5rem 1rem;
 }
 
 header a:link{
@@ -22,7 +23,84 @@ header a:link{
 }
 
 main{
-    padding: 0.9rem;
+    position: relative;
+    padding: 1rem 2rem;
+}
+
+main .navigation-btn{
+    display: block;
+    outline: none;
+    outline-offset: 3px;
+    color: #888;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    margin: auto;
+    margin-left: 0rem;
+    padding: 1rem 2.4rem;
+    font-size: small;
+}
+
+main .navigation-btn:focus{
+    outline: 2px outset rgba(30, 143, 255, 0.65);
+}
+
+main #search-form{
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 1px solid #ececec; */
+    background-color: #efefed;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 1rem auto;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+#search-form *{
+    text-align: center;
+    border: none;
+    padding: 0.8rem;
+    background-color: transparent;
+}
+
+#search-form button[type="submit"], [class^="section"] [class^="icofont-"]{
+    font-size: 18px;
+    color: orangered;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+
+}
+
+#search-form input[type="search"]{
+    outline: none;
+    width: 85%;
+}
+
+#search-form input[type='search']:focus + button{
+    background-color: orangered;
+}
+
+#search-form input[type='search']:focus + button *{
+    color: #fafafc;
+}
+
+main .indicators{
+    opacity: 0;
+    color: #ccc;
+    font-size: 1.2rem;
+    transition: opacity 0.3s ease;
+}
+
+.indicators, .indicators > *{
+    align-items: center;
+}
+
+.indicators > *{
+    margin-right: 1rem;
 }
 
 ul{
@@ -58,6 +136,10 @@ form .serror{
     background-color: transparent;
     color: black;
     padding: 1rem;
+}
+
+.strip-link{
+    text-decoration: none;
 }
 
 .serror *{
@@ -198,10 +280,6 @@ footer > *:last-child *{
     font-size: 1.8rem;
 }
 
-.strip-link{
-    text-decoration: none;
-}
-
 .response-display{
     position: fixed;
     z-index: +100;
@@ -226,6 +304,26 @@ footer > *:last-child *{
 }
 
 @media only screen and (max-width:800px){
+    main .top-pane{
+        flex-direction: column;
+    }
+
+    main .indicators{
+        margin: auto;
+        font-size: 1.2rem;
+    }
+
+    main .navigation-btn{
+        margin: auto;
+        margin-bottom: 1rem;
+        width: 80%;
+        padding: 0.8rem 2.4rem;
+    }
+
+    main #search-form{
+        width: 80vw;
+    }
+    
     form .serror{
         font-size: 1.2rem;
         border-radius: 2px;

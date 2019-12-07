@@ -485,11 +485,11 @@ const addListeners = () => {
     newMemberForm.addEventListener("submit", createTeamHandler);
     newProjectForm.addEventListener("submit", createProjectHandler);
 
-    document.querySelector("#new-member-form [data-cancel-btn]").addEventListener("click", function(evt) {
+    document.querySelector("#new-member-form [data-cancel-btn]").addEventListener("click", function() {
         newMemberForm.style.top = "-100%";
     });
 
-    document.querySelector("#new-project-form [data-cancel-btn]").addEventListener("click", function(evt) {
+    document.querySelector("#new-project-form [data-cancel-btn]").addEventListener("click", function() {
         newProjectForm.style.top = "-100%";
     });
 
@@ -498,6 +498,11 @@ const addListeners = () => {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
+    let pageQueryParams = getQuery();
+
+    if(pageQueryParams){
+        console.log(pageQueryParams);
+    }
     addListeners();
     getAllProject();
 });
