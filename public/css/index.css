@@ -184,7 +184,7 @@ main .indicators{
     flex-wrap: wrap;
     width: 100%;
     min-height: 500px;
-    border: 1px solid rgb(65, 42, 23);
+    border: 2px solid #494949;
     border-radius: 5px;
 }
 
@@ -239,8 +239,10 @@ main .indicators{
 
 #display-pane .user-item{
     display: flex;
+    position: relative;
     width: 46%;
     height: 16vw;
+    min-height: 22rem;
     border-radius: 5px;
     background-color: #f2f2f5;
     color: #424246;
@@ -312,12 +314,17 @@ button.add-user{
     right: 8%;
     width: 10rem;
     height: 10rem;
-    font-size: 4rem;
+    font-size: 3.5rem;
     border-radius: 50%;
     background-color: #737377;
     color: #363636;
     border: none;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+.user-item .user-buttons{
+    position: absolute;
+    bottom: 2rem;
 }
 
 button.user-more{
@@ -452,9 +459,17 @@ button.user-more{
     button.add-user{
         bottom: 10%;
         right: 10%;
-        width: 20vw;
-        height: 20vw;
+        width: 20vmin;
+        height: 20vmin;
         font-size: 2.7rem;
+    }
+
+    .user-item .user-buttons{
+        width: 55%;
+    }
+    
+    button.user-more{
+        width: 100%;
     }
 
 }
