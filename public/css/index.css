@@ -403,8 +403,8 @@ button.user-more{
     #display-pane .project-item{
         position: relative;
         width: 46%;
-        height: 16vmax;
-        min-height: 15rem;
+        height: 13vmax;
+        min-height: 12rem;
         margin: 2rem auto;
         box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
         overflow: unset;
@@ -414,7 +414,7 @@ button.user-more{
     .project-item::before{
         z-index: -1;
         width: 50%;
-        height: 16.5vmax;
+        height: 13.5vmax;
         top: -4px;
         right: 1rem;
         border-radius: 5px;
