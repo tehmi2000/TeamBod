@@ -360,10 +360,22 @@ const getAllProject = () => {
 
         }catch(error) {
             console.error(error);
+            showResponseBar({
+                action: "status",
+                label: `An error ocurred!`,
+                timeout: 5,
+                nullLabel: null
+            });
         }
 
     }).catch(function(error) {
         console.error(error);
+        showResponseBar({
+            action: "status",
+            label: "The process failed to get your request! Try again?",
+            timeout: 5,
+            nullLabel: null
+        });
     });
 };
 
@@ -399,10 +411,22 @@ const getAllTeam = (projectName) => {
 
         }catch(error) {
             console.error(error);
+            showResponseBar({
+                action: "status",
+                label: `An error ocurred!`,
+                timeout: 5,
+                nullLabel: null
+            });
         }
 
     }).catch(function(error) {
         console.error(error);
+        showResponseBar({
+            action: "status",
+            label: "The process failed to get your request! Try again?",
+            timeout: 5,
+            nullLabel: null
+        });
     });
 };
 
