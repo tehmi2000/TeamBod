@@ -495,5 +495,5 @@ const addListeners = () => {
 
 document.addEventListener("DOMContentLoaded", function () {
     addListeners();
-    getAllProject();
+    // getAllProject();
 });
