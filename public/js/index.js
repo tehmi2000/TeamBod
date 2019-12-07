@@ -159,6 +159,7 @@ const createTeamHandler = (e) => {
     const isOk = formValidator(document.querySelectorAll("#new-member-form [name]"));
     const apiUrl = `/api/TeamBod-Admin/${globalData.currentProject}/addTeamMember`;
     let bodyValue = {
+        imageUrl: "",
         name: (function(){
             let namesList = [];
             document.querySelectorAll("#new-member-form [name='name']").forEach(field => {
@@ -167,7 +168,10 @@ const createTeamHandler = (e) => {
             return namesList.join(' ');
         }()),
 
-        expertise: document.querySelector("#new-member-form [name='expertise']").value
+        expertise: document.querySelector("#new-member-form [name='expertise']").value,
+        project: document.querySelector("#new-member-form [name='project']").value,
+        tools: [],
+        "admin-key": document.querySelector("#new-member-form [name='admin-key']").value
     };
 
     const options = {
@@ -251,8 +255,8 @@ const createItem = function(container, object){
     div23.classList.add("user-buttons");
     button23.classList.add("strip-btn", "user-more");
 
-    div0.setAttribute("id", `${object['id']}`);
-    button23.setAttribute("id", `view_${object['id']}`);
+    div0.setAttribute("id", `member-${object['_id'] || object['id']}`);
+    button23.setAttribute("id", `view_${object['_id']}`);
 
     div221.innerHTML = object.tools.map(item => {
         let el = `<span class="tool rows"><i class='${color[item.level]}'></i><span>${item.name}</span></span>`;
@@ -265,7 +269,7 @@ const createItem = function(container, object){
     div0 = joinComponent(div0, div1, div2);
     container.appendChild(div0);
 
-    document.querySelector(`#${object['id']} .user-img`).style.backgroundImage = `url('${object['imageUrl']}')`;
+    document.querySelector(`#member-${object['_id'] || object['id']} .user-img`).style.backgroundImage = `url("${object['imageUrl']}")`;
 };
 
 const createProjectItem = (container, object) =>{
@@ -495,5 +499,5 @@ const addListeners = () => {
 
 document.addEventListener("DOMContentLoaded", function () {
     addListeners();
-    // getAllProject();
+    getAllProject();
 });
