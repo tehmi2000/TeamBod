@@ -205,16 +205,18 @@ footer > *:last-child *{
 .response-display{
     position: fixed;
     z-index: +100;
-    top: -10rem;
-    left: 0;
-    width: 100%;
-    padding: 1.5rem;
-    font-size: 1.3rem;
+    bottom: -10rem;
+    left: 50%;
+    width: auto;
+    padding: 1.5rem 5%;
+    font-size: 1.5rem;
     text-align: center;
-    color: white;
-    background-color: green;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.61);
+    color: #fff;
+    border-radius: 5px;
+    background-color: rgba(0, 183, 255, 0.6);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
     transition: all 0.6s ease;
+    transform: translateX(-50%);
 }
 
 @media only screen and (max-width:800px){
@@ -236,7 +238,7 @@ footer > *:last-child *{
     }
 
     .response-display{
-        padding: 1rem;
+        padding: 1.3rem 2rem;
         font-size: 1.2rem;
     }
 }

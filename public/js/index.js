@@ -3,6 +3,8 @@ const globalData = {
 
 };
 
+let responseDisplay = null;
+
 let testData = [
     {
         id: "one",
@@ -57,7 +59,7 @@ const dataValidator = data => {
 
     if(data.length > 0){
         let [dataOne] = data;
-        console.log(dataOne);
+        // console.log(dataOne);
     }else{
         
     }
@@ -289,9 +291,53 @@ const createProjectItem = (container, object) =>{
     container.appendChild(div0);
 };
 
+const showResponseBar = (timerObject) => {
+    
+    if(globalData['timer']){
+        clearTimeout(globalData['timer']);
+    }
+
+    responseDisplay.style.bottom = "10rem";
+    responseDisplay.innerHTML = timerObject.label;
+
+    switch (timerObject.action) {
+        case 'process':
+            globalData['timer'] = setTimeout(()=>{
+                responseDisplay.innerHTML = timerObject.nullLabel;
+                clearTimeout(globalData['timer']);
+                globalData['timer'] = null;
+        
+                const intime = setTimeout(()=>{
+                    responseDisplay.style.bottom = "-10rem";
+                    clearTimeout(intime);
+                }, 5000);
+            }, timerObject.timeout * 1000);
+            break;
+    
+        case 'status':
+            globalData['timer'] = setTimeout(()=>{
+                clearTimeout(globalData['timer']);
+                globalData['timer'] = null;
+                responseDisplay.style.bottom = "-10rem";
+            }, timerObject.timeout * 1000);
+            break;
+        default:
+            break;
+    }
+
+    
+};
+
 const getAllProject = () => {
     let apiUrl = `/api/TeamBod-Admin/allProject`;
-    
+
+    showResponseBar({
+        action: "process",
+        label: "Getting your Projects...",
+        timeout: 25,
+        nullLabel: "Something went wrong!"
+    });
+
     fetch(apiUrl).then(async function(response) {
         try{
             let result = await response.json();
@@ -300,6 +346,13 @@ const getAllProject = () => {
 
             let data = dataValidator(result).data;
             if(data){
+                showResponseBar({
+                    action: "status",
+                    label: "Done!",
+                    timeout: 4,
+                    nullLabel: null
+                });
+
                 data.forEach(item => {
                     createProjectItem(document.querySelector("#display-pane"), item);
                 });
@@ -316,6 +369,12 @@ const getAllProject = () => {
 
 const getAllTeam = (projectName) => {
     let apiUrl = `/api/TeamBod-Admin/${projectName}/allTeam`;
+    showResponseBar({
+        action: "process",
+        label: `Getting team members for ${projectName}...`,
+        timeout: 25,
+        nullLabel: "Something went wrong!"
+    });
     fetch(apiUrl).then(async function(response) {
         try{
             let result = await response.json();
@@ -325,6 +384,12 @@ const getAllTeam = (projectName) => {
 
             let data = dataValidator(result).data;
             if(data){
+                showResponseBar({
+                    action: "status",
+                    label: "Done!",
+                    timeout: 4,
+                    nullLabel: null
+                });
                 data.forEach(item => {
                     createItem(document.querySelector("#display-pane"), item);
                 });
@@ -379,6 +444,7 @@ const changeHandler = (type) => {
 
 
 const addListeners = () => {
+    responseDisplay = document.querySelector(".response-display");
     const newMemberForm = document.querySelector("#new-member-form");
     const newProjectForm = document.querySelector("#new-project-form");
 
@@ -404,6 +470,6 @@ const addListeners = () => {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-    getAllProject();
     addListeners();
+    getAllProject();
 });
