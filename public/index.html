@@ -25,28 +25,28 @@
         <form id="new-member-form" class="create-form">
             <div class="head">Add Team Member</div>
             <div class="body">
-                <label for="">First Name</label>
-                <input type="text" name="name" placeholder="E.g: John">
+                <label for="firstname-input">First Name</label>
+                <input type="text" name="name" placeholder="E.g: John" id="firstname-input">
 
-                <label for="">Last Name</label>
-                <input type="text" name="name" placeholder="E.g: Doe">
+                <label for="lastname-input">Last Name</label>
+                <input type="text" name="name" placeholder="E.g: Doe" id="lastname-input">
 
-                <label for="">Expertise</label>
-                <input type="text" name="expertise" placeholder="Web Developer">
+                <label for="expertise-input">Expertise</label>
+                <input type="text" name="expertise" placeholder="Web Developer" id="expertise-input">
 
-                <label for="">Project Name</label>
-                <select name="project" id="">
+                <label for="project-select">Project Name</label>
+                <select name="project" id="project-select">
                     <option value="Python">--- Select Project ---</option>
                 </select>
 
-                <label for="">Tools used</label>
-                <select name="tools" id="">
+                <label for="tools-select">Tools used</label>
+                <select name="tools" id="tools-select">
                     <option value="Python">--- Select Tool ---</option>
                 </select>
                 <input type="text" hidden>
                 
-                <label for="">Project's Admin Key</label>
-                <input type="text" name="admin-key" placeholder="E.g: QDk21i1SDJKrtW38432dgs" required>
+                <label for="admin-key-input">Project's Admin Key</label>
+                <input type="text" name="admin-key" placeholder="E.g: QDk21i1SDJKrtW38432dgs" required id="admin-key-input">
             </div>
             <div class="buttons">
                 <input type="submit" value="Create" class="strip-btn">
